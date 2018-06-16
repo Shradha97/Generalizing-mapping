@@ -24,7 +24,7 @@ def update(M1, M2, M3, S1, S2, S3, n):      # Welford's method of computing mean
         S3 = S3 + (BP - M3)*(BP - oldM3)
     return (M1, M2, M3, S1, S2, S3)
 
-def getAdditionalFactor(M1, M2, M3):        # This function calculates the deviation of mean of the observations and the supposed mid values of the observations
+def getAdditionalFactor(M1, M2, M3):        # This function calculates and returns the deviation of mean of the observations and the supposed mid values of the observations
     d1 = (M1 - float(99))**2                # 99, 75, 120 are the supposed mid values of Temperature, Heart rate and Blood Pressure respectively
     d2 = (M2 - float(75))**2
     d3 = (M3 - float(120))**2
@@ -97,13 +97,15 @@ def mappingBP(d3, S3, listBP):
 
 sample_size = input("Enter the number of observations required:")
 
-type(sample_size)
+# The following lists store the limits of the range of respective severity cases
 
 listT = []
 listHR = []
 listBP = []
 
 (M1, M2, M3, S1, S2, S3) = update(0, 0, 0, 0, 0, 0, int(sample_size))
+
+# The following functions fills up the list with appropriate values
 
 getMaxRangeT(listT)
 getMaxRangeHR(listHR)
